@@ -1,0 +1,269 @@
+\documentclass{article}
+\usepackage{graphicx}  % for including figures
+\usepackage{amsmath,amsthm,amssymb,hyperref,nicematrix, tikz}
+\usepackage{arydshln}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage{tikzsymbols}
+\usetikzlibrary{tikzmark}
+\usepackage{float} % For using H in figure position.
+\usepackage{bm}
+\usepackage[numbered,framed]{matlab-prettifier}
+\usepackage{gensymb}
+\usepackage{pgffor}
+\usepackage{relsize}
+\usepackage{booktabs} % Uses \toprule, midrule, etc. for tables.
+\usepackage{caption}
+\usepackage{makecell}
+
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+
+\newcommand{\blue}{\color{blue}}
+
+\NiceMatrixOptions
+  {
+    custom-line = 
+     {
+       letter=I, 
+       command=hdashedline, 
+       tikz=densely dashed,
+       width=\pgflinewidth
+     },
+     cell-space-limits = 1pt
+  }
+
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+\lstset{style=Matlab-editor}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bigrho}{\raisebox{-.15\baselineskip}{\Large\ensuremath{\rho}}} 
+
+% ------------------------------------------ %
+%                   START HERE               %
+% ------------------------------------------ %
+
+\begin{document}
+
+What's the distribution of (n-1)\textbf{S}?
+    \[
+        (n-1)\textbf{S}
+        =
+        \frac{n-1}{n -1}
+        \sum_{j=1}^{n}{
+            \left(\textbf{X}_{j} - \bar{\textbf{X}}\right)
+            {\left(\textbf{X}_{j} - \bar{\textbf{X}}\right)}^{\prime}
+        }
+        =
+    \]
+    \[
+        =
+        \sum_{j=1}^{n}{
+            \left(\textbf{X}_{j} + \bm{\mu} - \bm{\mu} - \bar{\textbf{X}}\right)
+            {\left(\textbf{X}_{j} + \bm{\mu} - \bm{\mu} - \bar{\textbf{X}}\right)}^{\prime}
+        }
+        =
+    \]
+    \[
+        =
+        \sum_{j=1}^{n}{
+            \left((\textbf{X}_{j} - \bm{\mu}) - (\bar{\textbf{X}} - \bm{\mu})\right)
+            {\left((\textbf{X}_{j} - \bm{\mu}) - (\bar{\textbf{X}} - \bm{\mu})\right)}^{\prime}
+        }
+        =
+    \]
+    \[
+        =
+        \scriptstyle{
+        \sum_{j=1}^{n}{
+            (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+            -
+            (\bar{\textbf{X}} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+            -
+            (\textbf{X}_{j} - \bm{\mu}){(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+            +
+            (\bar{\textbf{X}} - \bm{\mu}){(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+        }
+        }
+        =
+    \]
+    \[
+        =
+        \scriptstyle{
+        \sum_{j=1}^{n}{
+            (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+        }
+        -
+        2
+        \sum_{j=1}^{n}{
+            (\textbf{X}_{j} - \bm{\mu}){(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+        }
+        +
+        \sum_{j=1}^{n}{
+            (\bar{\textbf{X}} - \bm{\mu}){(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+        }
+        }
+        =
+    \]
+    \[
+        =
+        \scriptstyle{
+        \sum_{j=1}^{n}{
+            (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+        }
+        -
+        2
+        (\bar{\textbf{X}} - \bm{\mu})
+        \sum_{j=1}^{n}{
+            {(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+        }
+        +
+        n
+        (\bar{\textbf{X}} - \bm{\mu}){(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+        }
+        =
+    \]
+    \[
+        =
+        \scriptstyle{
+        \sum_{j=1}^{n}{
+            (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+        }
+        -
+        2
+        (\bar{\textbf{X}} - \bm{\mu})
+        {((\sum_{j=1}^{n}{\textbf{X}_{j}}) - n\bm{\mu})}^{\prime}
+        +
+        n
+        (\bar{\textbf{X}} - \bm{\mu}){(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+        }
+        =
+    \]
+    \[
+        =
+        \scriptstyle{
+        \sum_{j=1}^{n}{
+            (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+        }
+        -
+        2
+        (\bar{\textbf{X}} - \bm{\mu})
+        {(n\bar{\textbf{X}} - n\bm{\mu})}^{\prime}
+        +
+        n
+        (\bar{\textbf{X}} - \bm{\mu}){(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+        }
+        =
+    \]
+    \[
+        =
+        \scriptstyle{
+        \sum_{j=1}^{n}{
+            (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+        }
+        -
+        2n
+        (\bar{\textbf{X}} - \bm{\mu})
+        {(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+        +
+        n
+        (\bar{\textbf{X}} - \bm{\mu}){(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+        }
+        =
+    \]
+    \[
+        =
+        \sum_{j=1}^{n}{
+            (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+        }
+        -
+        n
+        (\bar{\textbf{X}} - \bm{\mu})
+        {(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+        =
+    \]
+    \[
+        =
+        \sum_{j=1}^{n}{
+            (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+        }
+        -
+        \left[
+            \sqrt{n}
+            (\bar{\textbf{X}} - \bm{\mu})
+        \right]
+        \left[
+            \sqrt{n}
+            {(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+        \right]
+        =
+    \]
+    so looking at the first and second part of this equation
+    \[
+        \textbf{X}_{j}
+        \sim
+        N(\underset{(p \times 1)}{\bm{\mu}}, \underset{(p \times p)}{\bm{\Sigma}})
+        \hspace{0.2cm}
+        \Rightarrow
+        \hspace{0.2cm}
+        (\textbf{X}_{j} - \bm{\mu})
+        \sim
+        N(\textbf{0}, \Sigma)
+        \Rightarrow
+    \]
+    \[
+        \Rightarrow
+        (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+        \sim
+        \chi_{1}^{2}
+        \Rightarrow
+    \]
+    \[
+        \Rightarrow
+        \sum_{j=1}^{n}{
+            (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
+        }
+        \sim
+        W_{p}(n, \Sigma)
+    \]
+    That is, the first term in the sum is distributed as a Wishart distribution with $n$ degrees of freedom. For the second term,
+    \[
+        \bar{\textbf{X}}
+        \sim
+        N(\bm{\mu}, \bm{\Sigma}/n)
+        \Rightarrow
+        (\bar{\textbf{X}} - \bm{\mu})
+        \sim
+        N(\textbf{0}, \bm{\Sigma}/n)
+        \Rightarrow
+    \]
+    \[
+        \Rightarrow
+        \sqrt{n}
+        (\bar{\textbf{X}} - \bm{\mu})
+        \sim
+        N(\textbf{0}, \bm{\Sigma})
+        \Rightarrow
+    \]
+    \[
+        \left[
+            \sqrt{n}
+            (\bar{\textbf{X}} - \bm{\mu})
+        \right]
+        \left[
+            \sqrt{n}
+            {(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+        \right]
+        \sim
+        W_{p}(1, \bm{\Sigma})
+    \]
+
+    That is, the second term in the sum is distributed as a Wishart distribution with 1 degree of freedom.
+
+    Combining the two, we now has a Wishart distribution with $n$ degrees of freedom minus another Wishart distribution with 1 degree of freedom to create a Wishart distribution with $n - 1$ distribution, so we finally have
+    \[
+        (n-1)\textbf{S}
+        \sim
+        W_{p}\left(n-1, \underset{(p \times p)}{\bm{\Sigma}}\right)
+    \]
+
+\end{document}
