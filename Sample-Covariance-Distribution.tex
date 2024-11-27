@@ -75,6 +75,7 @@ Let $\textbf{X}_{1}, \textbf{X}_{2}, \dots, \textbf{X}_{n}$ be a random sample o
         =
         \scriptstyle{
         \sum_{j=1}^{n}{
+            \left[
             (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
             -
             (\bar{\textbf{X}} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
@@ -82,6 +83,7 @@ Let $\textbf{X}_{1}, \textbf{X}_{2}, \dots, \textbf{X}_{n}$ be a random sample o
             (\textbf{X}_{j} - \bm{\mu}){(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
             +
             (\bar{\textbf{X}} - \bm{\mu}){(\bar{\textbf{X}} - \bm{\mu})}^{\prime}
+            \right]
         }
         }
         =
@@ -197,7 +199,7 @@ Let $\textbf{X}_{1}, \textbf{X}_{2}, \dots, \textbf{X}_{n}$ be a random sample o
         \right]
         =
     \]
-    so looking at the first and second part of this equation
+    so looking at the first part of this equation
     \[
         \textbf{X}_{j}
         \sim
@@ -259,7 +261,7 @@ Let $\textbf{X}_{1}, \textbf{X}_{2}, \dots, \textbf{X}_{n}$ be a random sample o
 
     That is, the second term in the sum is distributed as a Wishart distribution with 1 degree of freedom.
 
-    Combining the two, we now has a Wishart distribution with $n$ degrees of freedom minus another Wishart distribution with 1 degree of freedom to create a Wishart distribution with $n - 1$ distribution, so we finally have
+    Combining the two, we have a Wishart distribution with $n$ degrees of freedom minus another Wishart distribution with 1 degree of freedom to create a Wishart distribution with $n - 1$ distribution, so we finally have
     \[
         (n-1)\textbf{S}
         \sim
