@@ -207,14 +207,14 @@ Let $\textbf{X}_{1}, \textbf{X}_{2}, \dots, \textbf{X}_{n}$ be a random sample o
         \hspace{0.2cm}
         (\textbf{X}_{j} - \bm{\mu})
         \sim
-        N(\textbf{0}, \Sigma)
+        N(\textbf{0}, \bm{\Sigma})
         \Rightarrow
     \]
     \[
         \Rightarrow
         (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
         \sim
-        \chi_{1}^{2}
+        W_{p}(1, \bm{\Sigma})
         \Rightarrow
     \]
     \[
@@ -223,9 +223,9 @@ Let $\textbf{X}_{1}, \textbf{X}_{2}, \dots, \textbf{X}_{n}$ be a random sample o
             (\textbf{X}_{j} - \bm{\mu}){(\textbf{X}_{j} - \bm{\mu})}^{\prime}
         }
         \sim
-        W_{p}(n, \Sigma)
+        W_{p}(n, \bm{\Sigma})
     \]
-    That is, the first term in the sum is distributed as a Wishart distribution with $n$ degrees of freedom. For the second term,
+    That is, the first term in the sum is distributed as a Wishart distribution with $n$ degrees of freedom. Reminder that a $p$-dimensional Wishart distribution with $m$ degrees of freedom, $W_{p}(m, \bm{\Sigma})$, is equal to the distribution of $\sum_{j=1}^{m}\textbf{Z}_{j}\textbf{Z}_{j}^{\prime}$, where the $\textbf{Z}_{j}$ are independently distributed as $N_{p}(\textbf{0}, \bm{\Sigma})$. For the second term,
     \[
         \bar{\textbf{X}}
         \sim
